@@ -8,8 +8,84 @@
 {% block content %}
 
 
+<div class="page-inner mt-5">
+    <div class="page-header mt-5">
+        <div class="container">
+            <div class="content">
+                <div class="page-inner text-center">
+                    {% csrf_token %}
+
+                    {% if request.user.empprofile_set.all.0.profile_image %}
+                    <div class="card card-stats card-info card-round">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-5">
+                                    <div class="icon-big text-center">
+                                        <i class="flaticon-interface-6"></i>
+                                    </div>
+                                </div>
+                                <div class="col-7 col-stats">
+                                    <div class="numbers">
+                                        
+                                        <h8 class="card-title">You are all set with your profile</h8>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <form method="POST" action="/image_upload/" enctype="multipart/form-data">
+                        
+                        <div class="card card-stats card-info card-round">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <div class="icon-big text-center">
+                                            <i class="flaticon-interface-6"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-7 col-stats">
+                                        <div class="numbers">
+                                            
+                                            <h8 class="card-title">Fill in the details to complete profile</h8>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        {% csrf_token %}
+                         
+                        <div class="form-group form-control">
+                            <input type="file" name="emp_img" id="imgInp" required>
+                            <img id="blah" height="auto" width="100px" />
+                        </div>
+                        <div class="">
+                            <button type="submit" class="btn btn-primary mt-3">UPLOAD</button>
+                        </div>
+                        
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 {% endblock content %}
+
+<script>
+    imgInp.onchange = evt => {
+    const [file] = imgInp.files
+    console.log("asila")
+    if (file) {
+        blah.src = URL.createObjectURL(file)
+    }
+    }
+</script>
 
 <!-- Specific JS goes HERE -->
 {% block javascripts %}{% endblock javascripts %}
