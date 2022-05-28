@@ -1,0 +1,125 @@
+{% extends "layouts/base1.html" %}
+
+{% block title %} Login {% endblock title %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="page-inner">
+
+			<div class="row">
+				<div class="col-md-4 mt-5">
+					<div class="card card-info card-annoucement card-round">
+						<div class="card-body text-center">
+							<div class="card-opening">Welcome {{request.user.username}},</div>
+							<div class="card-desc">
+								Let's see who all are present!
+							</div>
+							<div class="card-detail">
+                                <a target="_blank"
+                                href="/clickgroup/" 
+                                class="btn btn-light btn-rounded"><p style="margin-bottom: 0px;">Track</p></a>
+                              
+								
+							</div>
+						</div>
+					</div>
+					<div class="card card-round">
+						<div class="card-body">
+							<div class="card-title fw-mediumbold">Suggested People</div>
+							<div class="card-list">
+                                {% for emp in users %}
+								<div class="item-list">
+									<div class="avatar">
+										<img src="{{emp.empprofile_set.all.0.profile_image.url}}" alt="..." class="avatar-img rounded-circle">
+									</div>
+									<div class="info-user ml-3">
+										<div class="username">{{emp.username}}</div>
+										<div class="status">Graphic Designer</div>
+									</div>
+									<button class="btn btn-icon btn-primary btn-round btn-xs">
+										<i class="fa fa-plus"></i>
+									</button>
+								</div>
+                                {% endfor %}
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				{% if sent %}
+				<div class="col-md-6 mt-5">
+					<div class="card full-height">
+						<div class="card-header">
+							<div class="card-head-row">
+								<div class="card-title">Group Attendance</div>
+								<div class="card-tools">
+									<div>{{attendance}}</div>
+									<ul class="nav nav-pills nav-secondary nav-pills-no-bd nav-sm" id="pills-tab" role="tablist">
+										<li class="nav-item">
+											<a class="nav-link" id="pills-today" data-toggle="pill" href="#pills-today" role="tab" aria-selected="true">Today</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link active" id="pills-week" data-toggle="pill" href="#pills-week" role="tab" aria-selected="false">Week</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" id="pills-month" data-toggle="pill" href="#pills-month" role="tab" aria-selected="false">Month</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							{% for p in present %}
+							
+							<div class="d-flex">
+
+								<div class="avatar avatar-online">
+									<span class="avatar-title rounded-circle border border-white bg-info">{{p.first_name.0}}{{p.last_name.0}}</span>
+								</div>
+								<div class="flex-1 ml-3 pt-1">
+									<h6 class="text-uppercase fw-bold mb-1">{{p.username}}<span class="text-success pl-3">PRESENT</span></h6>
+									<span class="text-muted">Attending the meet</span>
+								</div>
+								<div class="float-right pt-1">
+									<small class="text-muted">8:40 PM</small>
+								</div>
+							</div>
+							<div class="separator-dashed"></div>
+							{% endfor %}
+							{% for p in absent %}
+							
+							<div class="d-flex">
+
+								<div class="avatar avatar-offline">
+									<span class="avatar-title rounded-circle border border-white bg-info">{{p.first_name.0}}{{p.last_name.0}}</span>
+								</div>
+								<div class="flex-1 ml-3 pt-1">
+									<h6 class="text-uppercase fw-bold mb-1">{{p.username}}<span class="text-warning pl-3">ABSENT</span></h6>
+									<span class="text-muted">Unable to yet join</span>
+								</div>
+								<div class="float-right pt-1">
+									<small class="text-muted">8:40 PM</small>
+								</div>
+							</div>
+							<div class="separator-dashed"></div>
+							{% endfor %}
+							<a target="_blank"
+                                href="/attendance.xlsx/" 
+                                class="btn btn-success btn-rounded" download="attendance"><p style="margin-bottom: 0px;">Download Attendance</p></a>
+							
+						</div>
+					</div>
+					
+				</div>
+				{% endif %}
+                </div>
+				
+    </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}

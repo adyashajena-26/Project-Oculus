@@ -42,7 +42,11 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
+									{% if request.user.empprofile_set.all.0.profile_image %}
+									<img src="{{request.user.empprofile_set.all.0.profile_image.url}}" alt="..." class="avatar-img rounded-circle">
+									{% else %}
 									<img src="/static/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+									{% endif %}
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">

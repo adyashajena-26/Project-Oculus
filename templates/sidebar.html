@@ -6,12 +6,18 @@
         {% if request.user.is_authenticated %}	
             <div class="user">
                 <div class="avatar-sm float-left mr-2">
+                    {% if request.user.empprofile_set.all.0.profile_image %}
+                    <img src="{{request.user.empprofile_set.all.0.profile_image.url}}" alt="..." class="avatar-img rounded-circle">
+                    {% else %}
                     <img src="/static/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+                    {% endif %}
                 </div>
                 <div class="info">
+                   
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                         <span>
                             {{ request.user.username }}
+                            {{request.user}}
                             <span class="user-level">
                                 {{ request.user.email }}
                             </span>
@@ -43,6 +49,11 @@
                     <a  href="/attendance/">
                         <i class="fas fa-chart-bar"></i>
                         <p>Attendance</p>
+                    </a>
+
+                    <a  href="/groupattendance/">
+                        <i class="fas fa-chart-bar"></i>
+                        <p>Group Attendance</p>
                     </a>
                     <!-- <a  href="/analyse/">
                         <i class="fas fa-question"></i>

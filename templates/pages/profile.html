@@ -1,6 +1,6 @@
 {% extends "layouts/base1.html" %}
 
-{% block title %} Login {% endblock title %}
+{% block title %} Profile {% endblock title %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -72,6 +72,135 @@
             </div>
         </div>
     </div>
+</div>
+<div class="row" style="margin-left: 80px;margin-right: 80px;">
+    
+    <div class="col col-6" style="padding-left: 30px;padding-right: 30px;left: 10px;">
+        <div class="card card-profile">
+            <div class="card-header" style="background-image: url('/static/assets/img/blogpost.jpg')">
+                <div class="profile-picture">
+                    <div class="avatar avatar-xl">
+                        {% if request.user.empattendance_set.all|length %}
+                            <img src="{{request.user.empattendance_set.all.last.uploaded_pic.url}}" alt="..." class="avatar-img rounded-circle">
+                        {% else %}
+                            {% if request.user.empprofile_set.all.0.profile_image %}
+                                <img src="{{request.user.empprofile_set.all.0.profile_image.url}}" alt="..." class="avatar-img rounded-circle">
+                            {% else %}
+                                <img src="/static/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="user-profile text-center">
+                    <div class="name">{{request.user.first_name}}</div>
+                    <div class="job">{{request.user.first_name}} {{request.user.last_name}}</div>
+                    <div class="desc">A man who hates loneliness</div>
+                    <div class="social-media">
+                        <a class="btn btn-info btn-twitter btn-sm btn-link" href="#"> 
+                            <span class="btn-label just-icon"><i class="flaticon-twitter"></i> </span>
+                        </a>
+                        <a class="btn btn-danger btn-sm btn-link" rel="publisher" href="#"> 
+                            <span class="btn-label just-icon"><i class="flaticon-google-plus"></i> </span> 
+                        </a>
+                        <a class="btn btn-primary btn-sm btn-link" rel="publisher" href="#"> 
+                            <span class="btn-label just-icon"><i class="flaticon-facebook"></i> </span> 
+                        </a>
+                        <a class="btn btn-danger btn-sm btn-link" rel="publisher" href="#"> 
+                            <span class="btn-label just-icon"><i class="flaticon-dribbble"></i> </span> 
+                        </a>
+                    </div>
+                    <div class="view-profile">
+                        <a href="#" class="btn btn-secondary btn-block">View Attendance History</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row user-stats text-center">
+                    <div class="col">
+                        <div class="number">{{request.user.empattendance_set.all|length}}</div>
+                        <div class="title">Days Attended</div>
+                    </div>
+                    <div class="col">
+                        <div class="number">25K</div>
+                        <div class="title">Followers</div>
+                    </div>
+                    <div class="col">
+                        <div class="number">134</div>
+                        <div class="title">Following</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col col-6" style="padding-left: 50px;padding-right: 50px;padding-top: 50px;padding-bottom: 50px;">
+        <div class="row">
+            <div class="">
+                <div class="icon-big text-center">
+                    <!-- <i class="flaticon-interface-6"></i> -->
+                    {% if request.user.empattendance_set.all|length %}
+                        <img src="{{request.user.empattendance_set.all.last.uploaded_pic.url}}" alt="..." class="avatar-img rounded-circle">
+                    {% else %}
+                        {% if request.user.empprofile_set.all.0.profile_image %}
+                            <img src="{{request.user.empprofile_set.all.0.profile_image.url}}" alt="..." class="avatar-img rounded-circle">
+                        {% else %}
+                            <img src="/static/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row">
+    <div class="col-4 ml-5">
+        <div class="card card-success card-info card-round">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="icon-big text-center">
+                            <!-- <i class="flaticon-interface-6"></i> -->
+                            Days Attended
+                        </div>
+                    </div>
+                    <div class="col-4 col-stats">
+                        <div class="numbers">
+                            <h8 class="card-title">{{request.user.empattendance_set.all|length}}</h8>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!-- Emplyee Card -->
+
+
+<div class="row">
+{% for attn in request.user.empattendance_set.all %}
+    <div class="col-md-2">
+        <div class="card card-profile">
+            <div class="card-header">
+                <div class="profile-picture">
+                    <div class="avatar avatar-xl">
+                        <img src="{{attn.uploaded_pic.url}}" alt="..." class="avatar-img rounded-circle">
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="user-profile text-center">
+                    <div class="name">{{attn.date_taken}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
 </div>
 
 

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'authentication',
     'employee_profile',
     'attendance',
+    'groupattendance',
 ]
 
 MIDDLEWARE = [

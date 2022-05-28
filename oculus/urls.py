@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('authentication.urls')),
     path('', include('employee_profile.urls')),
     path('', include('attendance.urls')),
+    path('', include('groupattendance.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
