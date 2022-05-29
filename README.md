@@ -67,21 +67,5 @@ Contents
 
 ### Snapshots
 ---
-Some of the snapshots of website.
-</br>
-![Screenshot (321)](https://user-images.githubusercontent.com/79363736/154756737-5dd6ab6e-48ad-4813-a2d3-5098633a9e81.png)<br/> - Landing Page
 
-![Screenshot (327)](https://user-images.githubusercontent.com/79363736/154758030-8814c915-dd88-4594-9d85-17fe82bf457c.png) <br/> - DashBoard with POEM Score and weather dependency
-
-![Screenshot (328)](https://user-images.githubusercontent.com/79363736/154758229-6f1695f4-2bf6-4633-b2e3-0fb60b02cae7.png) <br/> - POEM questionnaire
-
-![Screenshot (330)](https://user-images.githubusercontent.com/79363736/154758868-cc821375-191f-4aaf-a890-ff99e316d877.png) <br/> - Triggers List
-
-![Screenshot (331)](https://user-images.githubusercontent.com/79363736/154758790-24ffca0a-b5b2-4a54-8843-ea3a64e6a2a4.png) <br/> - Insights
-
-![Screenshot (332)](https://user-images.githubusercontent.com/79363736/154758683-d57a0185-1486-4ba1-bc0e-b046abc9cc35.png) <br/> - EczeImage Analysis
-
-![Screenshot (334)](https://user-images.githubusercontent.com/79363736/154759244-744f93ba-e19b-4afa-8fd9-7cb07c7d2502.png) <br/> - Doctor's portal 
-
-![Screenshot (335)](https://user-images.githubusercontent.com/79363736/154759379-69d3eece-74e2-4f5c-8968-a685fc37acf7.png) <br/> - Appointment confirmation
 
