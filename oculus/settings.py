@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'employee_profile',
     'attendance',
     'groupattendance',
+    'survey',
 ]
 
 MIDDLEWARE = [

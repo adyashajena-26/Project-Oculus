@@ -134,24 +134,29 @@
             </div>
         </div>
     </div>
-    <div class="col col-6" style="padding-left: 50px;padding-right: 50px;padding-top: 50px;padding-bottom: 50px;">
-        <div class="row">
-            <div class="">
-                <div class="icon-big text-center">
-                    <!-- <i class="flaticon-interface-6"></i> -->
-                    {% if request.user.empattendance_set.all|length %}
-                        <img src="{{request.user.empattendance_set.all.last.uploaded_pic.url}}" alt="..." class="avatar-img rounded-circle">
-                    {% else %}
-                        {% if request.user.empprofile_set.all.0.profile_image %}
-                            <img src="{{request.user.empprofile_set.all.0.profile_image.url}}" alt="..." class="avatar-img rounded-circle">
-                        {% else %}
-                            <img src="/static/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
-                        {% endif %}
-                    {% endif %}
+    <div class="col-md-6">
+        <div class="card full-height">
+            <div class="card-body">
+                <div class="card-title">Overall statistics</div>
+                <div class="card-category">Attendance stats</div>
+                <div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
+                    <div class="px-2 pb-2 pb-md-0 text-center">
+                        <div id="circles-1"></div>
+                        <h6 class="fw-bold mt-3 mb-0">Target</h6>
+                    </div>
+                    <div class="px-2 pb-2 pb-md-0 text-center">
+                        <div id="circles-2"></div>
+                        <h6 class="fw-bold mt-3 mb-0">Streaks</h6>
+                    </div>
+                    <div class="px-2 pb-2 pb-md-0 text-center">
+                        <div id="circles-3"></div>
+                        <h6 class="fw-bold mt-3 mb-0">Absent</h6>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    
 
 </div>
 
@@ -206,7 +211,54 @@
 
 {% endblock content %}
 
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
 <script>
+    Circles.create({
+			id:'circles-1',
+			radius:45,
+			value:"request.user.empattendance_set.all|length",
+			maxValue:100,
+			width:7,
+			text:2,
+			colors:['#f1f1f1', '#FF9E27'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
+
+		Circles.create({
+			id:'circles-2',
+			radius:45,
+			value:"request.user.empattendance_set.all|length",
+			maxValue:2,
+			width:7,
+			text: "{{request.user.empattendance_set.all|length}}",
+			colors:['#f1f1f1', '#2BB930'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
+
+		Circles.create({
+			id:'circles-3',
+			radius:45,
+			value:3-"{{request.user.empattendance_set.all|length}}",
+			maxValue:100,
+			width:7,
+			text: 3-"{{request.user.empattendance_set.all|length}}",
+			colors:['#f1f1f1', '#F25961'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
     imgInp.onchange = evt => {
     const [file] = imgInp.files
     console.log("asila")
@@ -216,5 +268,4 @@
     }
 </script>
 
-<!-- Specific JS goes HERE -->
-{% block javascripts %}{% endblock javascripts %}
+{% endblock javascripts %}

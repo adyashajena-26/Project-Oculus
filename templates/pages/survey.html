@@ -19,7 +19,7 @@
                     <div class="card card-stats card-info card-round">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-5">
+                                <div class="col-3">
                                     <div class="icon-big text-center">
                                         <i class="flaticon-interface-6"></i>
                                     </div>
@@ -27,7 +27,7 @@
                                 <div class="col-7 col-stats">
                                     <div class="numbers">
                                         
-                                        <h8 class="card-title">Ready to take attendance</h8>
+                                        <h8 class="card-title">Extend your fingers to show how satisfied you are with your role</h8>
                                         
                                     </div>
                                 </div>
@@ -111,27 +111,20 @@
            uploaded.addEventListener('click', function(){
         $.ajax({
             type: "POST",
-            url: "{% url 'attendance_upload' %}",
+            url: "{% url 'survey_upload' %}",
            
             data: { 
                 imgBase64: image_data_url,
                 csrfmiddlewaretoken: '{{ csrf_token }}'
             },
             success: function(response){
-                console.log(response)
-                if(response['out'] == 'Face doesnt match')
-                {
-                    swal("Face doesnt match", {
-                            className: "red-bg",
+                console.log(response.count)
+                var a = "Submitted "+String(response.count)+"/5"+" with a "+response.emotion+" face"
+
+                swal({
+                        
+                        text: String(a),
                         });
-                    window.location.href = "/attendance/"
-                }
-                else{
-                    swal({
-                        icon: "success",
-                        });
-                    
-                }
             }
             }).done(function(o) {
                 console.log('saved');

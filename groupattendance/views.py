@@ -6,7 +6,7 @@ from .utils import decodeDesignImage, getFacesFromGroup, IdentifyFromGroup, prod
 from datetime import datetime
 import os
 # Create your views here.
-attendance_dict = {'jena': 0, '120CS0164': 1, 'Kamaljeet': 0, 'monajena': 0, 'monj': 0, 'ayushjena': 0}
+attendance_dict = {}
 def group_view(request):
     global attendance_dict
    
