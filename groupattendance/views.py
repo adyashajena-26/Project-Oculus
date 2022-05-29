@@ -34,6 +34,7 @@ def group_view(request):
             produce_excel(present,absent)
             return render(request,'pages/group.html',context={'users':users,'sent':True,'present': present,'absent':absent})
         else:
+            attendance_dict={}
             print(attendance_dict)
             return render(request,'pages/group.html',context={'users':users})
     else:

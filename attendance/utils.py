@@ -83,23 +83,34 @@ def check_spoof(file_path):
             label = True
     return label   
 def give_excel(day,month,attendance):
+    j=0
+    set_item=set()
+    print(j)
     workbook = xlsxwriter.Workbook('attendance_all.xlsx')
     
             # The workbook object is then used to add new
             # worksheet via the add_worksheet() method.
     worksheet = workbook.add_worksheet()
+    
     print(len(attendance))
     for i in range(0,len(attendance)):
         
         day_t = str(attendance[0][1].date())[8:]
         month_t = str(attendance[0][1].date())[5:-3]
-        print(day,day_t)
-        print(month,month_t)
+        
       
         if day==day_t and month==month_t:
             print("entered")
-            cell1 = 'A'+str(i+1)
-            print(attendance[i][3],type(User.objects.get(id=attendance[i][3])))
-            worksheet.write(cell1, User.objects.get(id=attendance[i][3]).username)
+            
+            elem=User.objects.get(id=attendance[i][3]).username
+            print(set_item)
+            if elem in set_item:
+                print("cont")
+                continue
+            else:
+                cell1 = 'A'+str(j+1)
+                j+=1
+                worksheet.write(cell1, User.objects.get(id=attendance[i][3]).username)
+                set_item.add(elem)
             
     workbook.close()
