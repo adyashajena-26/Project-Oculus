@@ -1,10 +1,9 @@
-# Project-Oculus
-Face recognition app
-![image]([https://user-images.githubusercontent.com/79363736/154750683-51de5279-35c9-499a-9eb5-752574f91def.png](https://www.google.com/url?sa=i&url=https%3A%2F%2Fblog.dormakaba.com%2Fwhat-is-facial-recognition-and-how-does-it-work%2F&psig=AOvVaw30rGXLF1X4ycJ7xuAjU1Dd&ust=1653922333119000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCPDopPr6hPgCFQAAAAAdAAAAABAD))
-# Project-EczeCare
-### `THEME : PRECISION MEDICINE`
 
-`Project-EczeCare` Project EczeCare is an Eczema tracking and analysis application to study infection and lifestyle changes in eczema patients and integrate caregiver and care receiver on a common platform while providing valuable insights like skin segmentation model for severity score calculation and certain mathematical models from POEM(Patient-Oriented Eczema Measure) score.
+![image](https://connectedremag.com/wp-content/uploads/2019/10/facial-recognition-connected-real-estate-768x687.png)
+# Project-OCULUS
+### `THEME : FACE RECOGNITION`
+
+`Project-Oculus` Project Oculus is an Attendance tracking application to take individual as well as group attendance for any organization. Along with that it also provides emotion recognition from facial features as well as hand gesture recognition to create interactive surveys.
 
 Contents
 ========
@@ -20,9 +19,8 @@ Contents
 ### Installation
 ---
 1. Clone the repository
-2. Open the Project Path where manage.py is present in python console. (ex-  C:\Users\jenaa\djangoproject\EczeCare)
-3. Create a .env file where the subscription and API key need to go.
-4. Run `pip install -r requirements.txt`
+2. Open the Project Path where manage.py is present in python console. (ex-  C:\Users\jenaa\djangoproject\Project-Oculus)
+3. Run `pip install -r requirements.txt`
 4. Run `python manage.py makemigrations` then `python manage.py migrate`.
 5. In python console type, `python manage.py runserver`
 6. The website link should be displayed on the side. Copy it and paste in the web browser.
@@ -41,7 +39,7 @@ Contents
 <br/>
 <li>Jinja2
 <br/>
-<li>PyTorch 
+<li>tensorflow
 <br/>
 <li>OpenCV
 <br/>
@@ -53,22 +51,18 @@ Contents
 ---
 <ol>
     
-<li>Patient Assessment : Self assessment of patients via a questionnaire and calculating their Patient Oriented Eczema Measure(POEM) score.
+<li>Create Profile: User has to create a profile by adding a picture of his/her face.
 </li></br>
-<li>Weather dependency of infection : Our Mathematical model calculates the dependency of eczema severity of patients with rise and fall in weather conditions.</li></br>
-<li>EczeImage : Recording the images of the patient’s skin as uploaded by them and based on the affected area , we calculate the severity of eczema and provide a segmented image (generated from our Deep Learning model) for the patient’s reference displayed as a carousel to show the improvements.
+<li>Take individual attendance: User can login and give attendance by verifying his face . Spoof or fake photos are identified by livliness detection and hence not accepted only faces of real human are verified.</li></br>
+<li>Group attendance : By uploading a picture of a group , the model recognises all people present in the photo and provides a downloadable excel sheet.
 </li></br>
-<li>Triggers : List of lifestyle habits that might worsen the skin condition of patient customisable by the patient.</li></br>
-<li>POEM score : Patient Oriented Eczema Measure Score calculated from regular questionnaire.
+<li>Gesture identification : Gesture identification predicts number of extended fingers by taking hand image as input hence can predict any numeral shown via gesture.</li></br>
+<li>Facial emotion recognition : 7 class of emotions are recognized along with their confidence scores by the model as -
+ angry,disgust,fear,happy,neutral,sad,surprise
 </li></br>
-<li>Insights : Representation of sleep, eczema and skin roughness condition of patient via user friendly graphs to study the improvement trends.
+<li>Downloadable : All the attendance taken can be downloaded on basis of date as an excel sheet
 </li></br>
-<li>Blogs : This platform can unlock new ways for people to stay better informed about skin disorders through expert-curated blogs.
-</li></br>
-<li>Consultation : In case of severe issues, we also provide the option to consult with doctors. Users can connect with doctors either through Video calling or Chatting.
-</li></br>
-<li>Doctor Portal : A separate doctor portal containing insights of the doctor's patient.
-</li></br>
+
 </ol>
 
 ### Snapshots
@@ -91,11 +85,3 @@ Some of the snapshots of website.
 
 ![Screenshot (335)](https://user-images.githubusercontent.com/79363736/154759379-69d3eece-74e2-4f5c-8968-a685fc37acf7.png) <br/> - Appointment confirmation
 
-### Demo
----
-
-[EczeCare_Demo](https://projecteczecare.pythonanywhere.com/)
-### Weight file for DL Model
----
-Drive Link : https://drive.google.com/file/d/1qKZwkmRWwLs5byPjOMegMUN5FIUhs8vB/view?usp=sharing
-</br>
