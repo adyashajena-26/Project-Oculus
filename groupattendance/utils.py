@@ -6,26 +6,10 @@ import io, uuid
 import mediapipe as mp
 import cv2, math, os
 from datetime import datetime
-import face_recognition
+from attendance.utils import compare_two_face
 import xlsxwriter
  
-def get_file_extension(file_name,decoded_file):
-    extension = imghdr.what(file_name,decoded_file)
-    extension = "jpg" if extension=="jpeg" else extension
-    return extension 
 
-def decodeDesignImage(data):
-    try:
-        data = base64.b64decode(data)
-        buf = io.BytesIO(data)
-        img = Image.open(buf)
-        # img.save('image.png', 'PNG')
-    except:
-        print("INVALID")
-    file_name = str(uuid.uuid4())[:12]
-    file_extension = get_file_extension(file_name,data)
-    complete_file_name = "%s.%s" % (file_name,file_extension,)
-    return ContentFile(data,name=complete_file_name), img
 
 def getFacesFromGroup(image_path,user_name):
     
@@ -67,16 +51,7 @@ def getFacesFromGroup(image_path,user_name):
                 cv2.imwrite(path_file,cropped_image)
                 cv2.waitKey(1)
     
-def compare_two_face(existing_file, received_file):
-    existing_img = face_recognition.load_image_file(existing_file)
-    img_received = face_recognition.load_image_file(received_file)
-    
-    img_received_facial = face_recognition.face_encodings(img_received)[0]
-    existing_img_facial = face_recognition.face_encodings(existing_img)[0]
-    results = face_recognition.compare_faces([img_received_facial],existing_img_facial)
-    if(results[0]):
-        return 1
-    else:
+
         return 0
 
 

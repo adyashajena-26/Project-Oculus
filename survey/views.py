@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render , redirect
-from groupattendance.utils import decodeDesignImage
+from attendance.utils import decodeDesignImage
 from .utils import count_fingers, emotion
 from datetime import datetime
 import os

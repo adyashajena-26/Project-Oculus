@@ -126,11 +126,21 @@
                         });
                     window.location.href = "/attendance/"
                 }
+                else if (response['out']=="Spoof image uploaded"){
+                    swal({
+                        text : String(response.out)
+                    })
+                }
+                else if (response['out']=="Go to a lighted area"){
+                    swal({
+                         text: String(response.out),
+                        });
+                    
+                }
                 else{
                     swal({
                         icon: "success",
                         });
-                    
                 }
             }
             }).done(function(o) {

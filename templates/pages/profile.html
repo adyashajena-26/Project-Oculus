@@ -161,28 +161,7 @@
 </div>
 
 
-<div class="row">
-    <div class="col-4 ml-5">
-        <div class="card card-success card-info card-round">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-8">
-                        <div class="icon-big text-center">
-                            <!-- <i class="flaticon-interface-6"></i> -->
-                            Days Attended
-                        </div>
-                    </div>
-                    <div class="col-4 col-stats">
-                        <div class="numbers">
-                            <h8 class="card-title">{{request.user.empattendance_set.all|length}}</h8>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-</div>
+
 
 <!-- Emplyee Card -->
 
@@ -233,10 +212,10 @@
 		Circles.create({
 			id:'circles-2',
 			radius:45,
-			value:"request.user.empattendance_set.all|length",
-			maxValue:2,
+			value:50,
+			maxValue:100,
 			width:7,
-			text: "{{request.user.empattendance_set.all|length}}",
+			text: 50+"%",
 			colors:['#f1f1f1', '#2BB930'],
 			duration:400,
 			wrpClass:'circles-wrp',

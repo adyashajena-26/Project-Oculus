@@ -1,0 +1,44 @@
+{% extends "layouts/base1.html" %}
+
+{% block title %} Login {% endblock title %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+<div class="page-inner mt-5">
+    <div class="page-header mt-5">
+        
+
+            <form method="POST" action="/download_attendance/">
+                {% csrf_token %}
+            <label for="birthday">SELECT DATE:</label>
+            <input type="date" id="birthday" name="date">
+            <input type="submit" class="btn btn-success btn-rounded">
+            </form>
+            {% if d %}
+            <a target="_blank"
+                href="/attendance_all.xlsx/" 
+                class="btn btn-success btn-rounded ml-5" download="attendance"><p style="margin-bottom: 0px;">Download</p></a>
+
+            {% endif %}
+
+        
+</div>
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+
+{% endblock javascripts %}
