@@ -1,7 +1,6 @@
 absl-py==1.0.0
 adal==1.2.7
 amqp==5.1.1
-asgiref @ file:///tmp/build/80754af9/asgiref_1625643473416/work
 aspose-words==22.5.0
 astunparse==1.6.3
 async-timeout==4.0.2
