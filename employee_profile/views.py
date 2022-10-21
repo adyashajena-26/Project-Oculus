@@ -8,7 +8,8 @@ def profile_view(request):
 
         return render(request,"pages/profile.html")
     else:
-        redirect("login")
+       
+        return redirect("login")
 
 def profile_image(request):
     if request.user.is_authenticated:
